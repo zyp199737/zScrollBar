@@ -1,0 +1,43 @@
+.z-scroll{
+  width: 250px;
+  height: 400px;
+  padding: 10px;
+  background-color: #f0865c;
+  border-radius: 5px;
+}
+.z-scroll .z-scroll-box{
+  background-color: #f2f7f9;
+  border-radius: 5px;
+  height: 100%;
+  margin-right: 25px;
+  overflow: hidden;
+}
+.z-scroll .z-scroll-content.zscroll{
+  transition: transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;  /* Firefox 4 */
+  -webkit-transition: -webkit-transform 0.3s; /* Safari 和 Chrome */
+  -o-transition: -o-transform 0.3s;  /* Opera */
+}
+.z-scroll .z-scroll-shank{
+  float: right;
+  width: 20px;
+  height: 100%;
+  text-align: center;
+}
+.z-scroll .z-scroll-shank:before{
+  display: inline-block;
+  content: '';
+  height: 100%;
+  width: 5px;
+  background-color: #6f2305;
+}
+.z-scroll .z-scroll-block{
+  display: inline-block;
+  width: 20px;
+  height: 40px;
+  margin-top: -4px;
+  border-radius: 4px;
+  background-color: #f7f979;
+  transform:translateY(-100px);
+  cursor:pointer;
+}
