@@ -12,3 +12,20 @@ zScrollBar是一个仿照pc端滚动条的插件，实现了拖动滑块带动�
       hideBlock:false //隐藏滑块
     });
 ```
+### 使用方法
+>step 1:首先在头部引入样式表zscroll.css
+```html
+<link rel="stylesheet" type="text/css" href="./css/zscroll.css">
+```
+>step 2:在body最后面引入脚本文件zscroll.js
+```html
+<script type="text/javascript" src="./js/zscroll.js"></script>
+```
+>step 3:初始化zScroll实例对象。
+```javascript
+var scroll = new zScroll({
+      id: 'scroll',
+      containerHeight: 280,
+      hideBlock:false
+    });
+```
