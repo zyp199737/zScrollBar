@@ -55,12 +55,12 @@ zScroll.prototype.moveBlock = function(shank_ht) {
         swipePanelClass = _this.swiperPanel.className;
       if (target.className == _this.swiperBlock.className) {
         _this.touchStart.call(_this, e);
-        _this.swiperPanel.className = _this.swiperPanel.className.replace('zscroll', '');
+        // _this.swiperPanel.className = _this.swiperPanel.className.replace('zscroll', '');
       } else if (_this.swiperPanel.contains(target)) {
         _this.touchStartPanel.call(_this, e);
-        if (swipePanelClass.indexOf('zscroll') < 0) {
-          _this.swiperPanel.className = swipePanelClass + ' zscroll';
-        }
+        // if (swipePanelClass.indexOf('zscroll') < 0) {
+        //   _this.swiperPanel.className = swipePanelClass + ' zscroll';
+        // }
       }
     });
     _this.container.addEventListener('touchmove', function(e) {
