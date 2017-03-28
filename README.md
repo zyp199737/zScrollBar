@@ -10,6 +10,7 @@ zScroll是一个仿照pc端滚动条的插件，实现了拖动滑块带动左�
 | id     | string | 容器id |
 | containerHeight     | int | 容器高度 |
 | hideBlock     | boolean | 隐藏滑块：默认false |
+| blockWidth     | int | 滑块宽度 |
 ### 使用方法
 >step 1:首先在头部引入样式表zscroll.css
 ```html
@@ -24,6 +25,7 @@ zScroll是一个仿照pc端滚动条的插件，实现了拖动滑块带动左�
 var scroll = new zScroll({
       id: 'scroll',
       containerHeight: 280,
-      hideBlock:false
+      hideBlock:false,
+      blockWidth:20
     });
 ```

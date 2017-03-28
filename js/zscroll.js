@@ -11,7 +11,12 @@ function zScroll(options) {
   this.options = options || {};
   if (this.options.id) {
     this.container = document.getElementById(this.options.id);
-    this.options.containerHeight && (this.container.style.height = this.options.containerHeight + 'px');
+    this.container.className=this.container.className+' z-scroll';
+    if (this.options.containerHeight) {
+      this.container.style.height = this.options.containerHeight + 'px'
+    } else {
+      this.options.containerHeight = this.container.offsetHeight;
+    }
     this.render(); //加载内容
     this.swiperPanel = this.container.children[1].children[0];
     this.shank = this.container.children[0];
@@ -19,6 +24,13 @@ function zScroll(options) {
     if (this.options.hideBlock) {
       this.shank.style.display = 'none';
       this.swiperPanel.parentNode.style.marginRight = 0;
+    } else {
+      /** [if description]设置滑块宽度 */
+      if (!isNaN(this.options.blockWidth)) {
+        this.shank.style.width = (this.options.blockWidth + 2) + 'px';
+        this.swiperBlock.style.width = this.options.blockWidth + 'px';
+        this.swiperPanel.parentNode.style.marginRight = (this.options.blockWidth + 5) + 'px';
+      }
     }
     this.initBlockPosition();
   } else {
@@ -34,6 +46,9 @@ zScroll.prototype.render = function() {
 zScroll.prototype.initBlockPosition = function() {
   if (this.shank && this.swiperBlock) {
     var shank_ht = this.shank.offsetHeight;
+    if (!shank_ht) {
+      shank_ht = this.options.containerHeight;
+    }
     this.swiperBlock.style.webkitTransform = 'translateY(-' + shank_ht + 'px)';
     this.swiperPanel.style.webkitTransform = 'translateY(0px)';
     this.moveBlock(shank_ht);
@@ -48,6 +63,7 @@ zScroll.prototype.moveBlock = function(shank_ht) {
   this.panelY = 0;
   this.aboveY = -shank_ht;
   this.abovePanelY = 0;
+  this.timeRange = 0;
   if (_this.container) {
     _this.container.addEventListener('touchstart', function(e) {
       e.preventDefault();
@@ -130,11 +146,13 @@ zScroll.prototype.moveSwipePanel = function() {
 zScroll.prototype.touchStartPanel = function(e) {
   var touch = e.touches[0];
   this.startPanelY = touch.pageY;
+  this.timeRange = e.timeStamp || Date.now();
 };
 zScroll.prototype.touchMovePanel = function(e) {
   var touch = e.touches[0],
     shank_ht = this.swiperPanel.parentNode.offsetHeight,
-    panel_ht = this.swiperPanel.offsetHeight;
+    panel_ht = this.swiperPanel.offsetHeight,
+    swipePanelClass = this.swiperPanel.className;
   this.panelY = parseInt(this.abovePanelY + touch.pageY - this.startPanelY);
   if (this.panelY <= 0 && this.panelY >= -(panel_ht - shank_ht)) {
     this.swiperPanel.style.webkitTransform = 'translateY(' + this.panelY + 'px)';

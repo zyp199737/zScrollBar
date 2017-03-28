@@ -13,9 +13,13 @@
     width: 100%;
     height: auto;
   }
+  .out-css{
+    padding:10px;
+  }
   </style>
 </head>
 <body>
+  <input type="button" value="显示内容" id="btn">
   <div>
     <h1>我是滚动条插件</h1>
     <h1>我是滚动条插件</h1>
@@ -24,7 +28,7 @@
     <h1>我是滚动条插件</h1>
     <h1>我是滚动条插件</h1>
   </div>
-  <div class="z-scroll" id="scroll">
+  <div class="out-css" id="scroll" style="display: none;border:5px solid #ccc;">
     <div class="m-doc">
       <p>世人都爱美女，但对美的态度却模棱两可。欣赏艳羡的同时，又不免在内心嘀咕一句：生得一副好皮囊，真是独得上天厚爱，难怪一生顺风顺水花团锦簇呢。说到美女，尤其是民国美女，林徽因便是其中名声最大的了，只是有人奉她为女神，有人觉得她也不过是个“绿茶婊”而已，挽着个梁思成，念念不忘徐志摩，甚至还让人家金岳霖为她终身不嫁。这些评说里，大家都只将她视为女人、长得漂亮的女人，却忽略了她所做的事情。</p>
       <p>林徽因曾说过：“真讨厌，什么美人、美人，好像女人没有什么事可做似的，我还有好些事要做呢！”在她看来，仅以“美人”来看待她，是对她的轻视。</p>
@@ -58,8 +62,12 @@
     var scroll = new zScroll({
       id: 'scroll',
       containerHeight: 280,
-      hideBlock:false
+      hideBlock:false,
+      blockWidth:10
     });
+    document.getElementById('btn').addEventListener('click',function(){
+      document.getElementById('scroll').style.display="block";
+    },false);
   </script>
 </body>
 </html>
